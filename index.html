@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>YozoraMoonlight | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg1: #070a14;
+  --bg2: #0b1020;
+  --moon: #c4b5fd;
+  --moon2: #38bdf8;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(196,181,253,0.2);
+}
+
+/* BASE */
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, var(--bg2), var(--bg1) 70%);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* STARS */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.05;
+  animation: starsMove 120s linear infinite;
+}
+
+@keyframes starsMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+/* MOON */
+body::after {
+  content: "";
+  position: fixed;
+  top: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(196,181,253,0.25));
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 80px rgba(196,181,253,0.12),
+    0 0 140px rgba(56,189,248,0.06);
+
+  opacity: 0.35;
+  filter: blur(1px);
+
+  z-index: -1; 
+  pointer-events: none;
+
+  animation: none; 
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 110px 20px 60px;
+}
+
+.pfp {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 2px solid var(--moon);
+  box-shadow: 0 0 35px rgba(196,181,253,0.35);
+  object-fit: cover;
+  transition: 0.3s ease;
+}
+
+.pfp:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 50px rgba(196,181,253,0.5);
+}
+
+/* TITLE */
+h1 {
+  font-size: 52px;
+  margin-top: 18px;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, var(--moon), var(--moon2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.typing {
+  margin-top: 14px;
+  font-size: 16px;
+  color: var(--moon);
+  min-height: 22px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* SECTIONS */
+section {
+  max-width: 860px;
+  margin: auto;
+  padding: 42px 20px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title::before {
+  content: "";
+  width: 6px;
+  height: 22px;
+  background: linear-gradient(var(--moon), var(--moon2));
+  border-radius: 4px;
+}
+
+/* CARDS */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 22px;
+  border-radius: 16px;
+  backdrop-filter: blur(14px);
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(196,181,253,0.08), transparent 60%);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(196,181,253,0.5);
+  box-shadow: 0 20px 50px rgba(196,181,253,0.1);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* LINKS */
+a {
+  color: var(--moon2);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  h1 { font-size: 36px; }
+
+  body::after {
+    width: 90px;
+    height: 90px;
+    right: 20px;
+    top: 60px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img class="pfp" src="https://github.com/YozoraMoonlight.png" alt="pfp">
+
+  <h1>YozoraMoonlight</h1>
+
+  <div class="typing" id="typing"></div>
+</header>
+
+<section>
+  <div class="title">About Me</div>
+  <div class="card">
+    I enjoy learning how systems work and building small projects to understand technology better.
+  </div>
+</section>
+
+<section>
+  <div class="title">Skills</div>
+  <div class="card">
+    Computer Literacy
+  </div>
+</section>
+
+<section>
+  <div class="title">Projects</div>
+  <div class="card">
+    N/A
+  </div>
+</section>
+
+<section>
+  <div class="title">GitHub</div>
+  <div class="card">
+    Username: <b>YozoraMoonlight</b><br>
+    <a href="https://github.com/YozoraMoonlight">github.com/YozoraMoonlight</a>
+  </div>
+</section>
+
+<section>
+  <div class="title">Contact</div>
+  <div class="card">
+    Email: N/A
+  </div>
+</section>
+
+<footer>
+  © 2026 Portfolio
+</footer>
+
+</body>
+</html>
